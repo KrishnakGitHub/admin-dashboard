@@ -171,12 +171,12 @@ USE_TZ = True
 STATIC_URL = 'static/'
 MEDIA_URL = '/images/'
 
-STATICFILES_DIRS = [
-    BASE_DIR / 'static',
-    BASE_DIR / 'frontend/build/static'
-    'https://dr-admin-dashboard.herokuapp.com/static'
+# STATICFILES_DIRS = [
+#     BASE_DIR / 'static',
+#     BASE_DIR / 'frontend/build/static'
+#     'https://dr-admin-dashboard.herokuapp.com/static'
 
-]
+# ]
 
 
 MEDIA_ROOT = BASE_DIR / 'static/images'
