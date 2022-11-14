@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import {
   Nav,
+  NavItem,
+  NavLink,
   Accordion,
   AccordionBody,
   AccordionHeader,
@@ -23,31 +25,38 @@ function Sidebar(props) {
         <AccordionItem>
           <AccordionHeader targetId="1"><i class="bi bi-house-door-fill"></i> Dashboard</AccordionHeader>
           <AccordionBody accordionId="1">
-            <strong>This is the first item&#39;s accordion body.</strong>
-            You can modify any of this with custom CSS or overriding our default
-            variables. It&#39;s also worth noting that just about any HTML can
-            go within the <code>.accordion-body</code>, though the transition
-            does limit overflow.
+          <NavItem>
+            <NavLink href="/">
+              Dashboard
+            </NavLink>
+          </NavItem>
           </AccordionBody>
         </AccordionItem>
         <AccordionItem>
           <AccordionHeader targetId="2"><i class="bi bi-lightning-fill"></i> Project</AccordionHeader>
           <AccordionBody accordionId="2">
-            <strong>This is the second item&#39;s accordion body.</strong>
-            You can modify any of this with custom CSS or overriding our default
-            variables. It&#39;s also worth noting that just about any HTML can
-            go within the <code>.accordion-body</code>, though the transition
-            does limit overflow.
+          <NavLink href="/project">
+              Project
+            </NavLink>
+            <NavLink href="/project-details">
+              Project Details
+            </NavLink>
+            <NavLink href="/new-project">
+              New Project
+            </NavLink>
           </AccordionBody>
         </AccordionItem>
         <AccordionItem>
           <AccordionHeader targetId="3"><i class="bi bi-person-fill"></i> Client</AccordionHeader>
           <AccordionBody accordionId="3">
-            <strong>This is the third item&#39;s accordion body.</strong>
-            You can modify any of this with custom CSS or overriding our default
-            variables. It&#39;s also worth noting that just about any HTML can
-            go within the <code>.accordion-body</code>, though the transition
-            does limit overflow.
+          <NavItem>
+            <NavLink href="/mc">
+              Manager Client
+            </NavLink>
+            <NavLink href="/clnt">
+              Client Details
+            </NavLink>
+          </NavItem>
           </AccordionBody>
         </AccordionItem>
       </Accordion>
