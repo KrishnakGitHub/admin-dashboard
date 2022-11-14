@@ -23,30 +23,6 @@ body {
     background: #fff;
     border-radius: 20px;
   }
-  .base .sidebar .accordion .nav .nav-item .parent-link {
-    padding: 20px;
-    margin: 2px;
-    background: #fff;
-    border-radius: 5px;
-    color: grey;
-  }
-  .base .sidebar .accordion .nav .nav-item .parent-link .expan {
-    float: right;
-    position: relative;
-    color: #000;
-  }
-  .base .sidebar .accordion .nav .active .parent-link {
-    padding: 20px;
-    margin: 2px;
-    background: #702cf922;
-    border-radius: 5px;
-    color: #4c0bce;
-  }
-  .base .sidebar .accordion .nav .active .parent-link .expan {
-    float: right;
-    position: relative;
-    color: #000;
-  }
   .base .main .total-row div {
     border-radius: 5px;
   }

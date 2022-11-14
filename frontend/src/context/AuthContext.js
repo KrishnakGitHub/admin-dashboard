@@ -3,7 +3,8 @@ import jwt_decode from "jwt-decode";
 import { useHistory } from 'react-router-dom'
 
 
-const domain = 'https://dr-admin-dashboard.herokuapp.com'
+// const domain = 'https://dr-admin-dashboard.herokuapp.com'
+const domain = 'https://8000-autumn-night-66818328.eu-ws4.runcode.io';
 
 
 const AuthContext = createContext()
