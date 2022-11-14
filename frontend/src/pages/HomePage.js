@@ -1,8 +1,8 @@
 import React, {useState, useEffect, useContext} from 'react';
 import AuthContext from '../context/AuthContext';
 
-// const domain = 'https://dr-admin-dashboard.herokuapp.com'
-const domain = 'https://8000-autumn-night-66818328.eu-ws4.runcode.io';
+const domain = 'https://dr-admin-dashboard.herokuapp.com'
+// const domain = 'https://8000-autumn-night-66818328.eu-ws4.runcode.io';
 
 const HomePage = () => {
     let [notes, setNotes] = useState([])
