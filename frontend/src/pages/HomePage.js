@@ -1,6 +1,8 @@
 import React, {useState, useEffect, useContext} from 'react';
 import AuthContext from '../context/AuthContext';
 
+const domain = 'https://dr-admin-dashboard.herokuapp.com/'
+
 const HomePage = () => {
     let [notes, setNotes] = useState([])
     let {authTokens, logoutUser} = useContext(AuthContext)
@@ -11,7 +13,7 @@ const HomePage = () => {
 
 
     let getNotes = async() =>{
-        let response = await fetch('https://8000-autumn-night-66818328.eu-ws4.runcode.io/api/notes/', {
+        let response = await fetch(`${domain}/api/notes/`, {
             method:'GET',
             headers:{
                 'Content-Type':'application/json',

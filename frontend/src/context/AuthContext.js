@@ -2,6 +2,10 @@ import { createContext, useState, useEffect } from 'react'
 import jwt_decode from "jwt-decode";
 import { useHistory } from 'react-router-dom'
 
+
+const domain = 'https://dr-admin-dashboard.herokuapp.com/'
+
+
 const AuthContext = createContext()
 
 export default AuthContext;
@@ -16,7 +20,7 @@ export const AuthProvider = ({children}) => {
 
     let loginUser = async (e )=> {
         e.preventDefault()
-        let response = await fetch('https://8000-autumn-night-66818328.eu-ws4.runcode.io/api/token/', {
+        let response = await fetch(`${domain}/api/token/`, {
             method:'POST',
             headers:{
                 'Content-Type':'application/json'
@@ -46,7 +50,7 @@ export const AuthProvider = ({children}) => {
 
     let updateToken = async ()=> {
 
-        let response = await fetch('https://8000-autumn-night-66818328.eu-ws4.runcode.io/api/token/refresh/', {
+        let response = await fetch(`${domain}/api/token/refresh/`, {
             method:'POST',
             headers:{
                 'Content-Type':'application/json'
