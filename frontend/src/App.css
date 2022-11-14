@@ -1,38 +1,65 @@
-.App {
-  text-align: center;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
+body {
+    height: 100vh;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    background: #efefff;
   }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+  .base {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 100%;
+    padding: 10px;
   }
-  to {
-    transform: rotate(360deg);
+  .base .sidebar {
+    padding: 10px;
   }
-}
+  .base .sidebar .accordion {
+    height: 100%;
+    padding: 20px;
+    background: #fff;
+    border-radius: 20px;
+  }
+  .base .sidebar .accordion .nav .nav-item .parent-link {
+    padding: 20px;
+    margin: 2px;
+    background: #fff;
+    border-radius: 5px;
+    color: grey;
+  }
+  .base .sidebar .accordion .nav .nav-item .parent-link .expan {
+    float: right;
+    position: relative;
+    color: #000;
+  }
+  .base .sidebar .accordion .nav .active .parent-link {
+    padding: 20px;
+    margin: 2px;
+    background: #702cf922;
+    border-radius: 5px;
+    color: #4c0bce;
+  }
+  .base .sidebar .accordion .nav .active .parent-link .expan {
+    float: right;
+    position: relative;
+    color: #000;
+  }
+  .base .main .total-row div {
+    border-radius: 5px;
+  }
+  .base .main .total-row div:nth-child(1) {
+    background: rgba(0, 0, 255, 0.139);
+  }
+  .base .main .total-row div:nth-child(2) {
+    background: rgba(246, 255, 0, 0.139);
+  }
+  .base .main .total-row div:nth-child(3) {
+    background: rgba(111, 255, 0, 0.139);
+  }
+  .base .main .total-row div:nth-child(4) {
+    background: rgba(255, 111, 0, 0.139);
+  }
+  
