@@ -29,12 +29,12 @@ function App() {
               <Switch>
                 <AuthProvider>
                   <PrivateRoute component={DashboardPage} path="/" exact/>
-                  <PrivateRoute component={HomePage} path="/home"/>
-                  <PrivateRoute component={ProjectPage} path="/project"/>
-                  <PrivateRoute component={ProjectDetailsPage} path="/project-details"/>
-                  <PrivateRoute component={NewProjectPage} path="/new-project"/>
-                  <PrivateRoute component={ManagerClientPage} path="/mc"/>
-                  <PrivateRoute component={ClientDetailsPage} path="/clnt"/>
+                  <PrivateRoute component={HomePage} path="/home"exact/>
+                  <PrivateRoute component={ProjectPage} path="/project"exact/>
+                  <PrivateRoute component={ProjectDetailsPage} path="/project-details"exact/>
+                  <PrivateRoute component={NewProjectPage} path="/new-project"exact/>
+                  <PrivateRoute component={ManagerClientPage} path="/mc" exact/>
+                  <PrivateRoute component={ClientDetailsPage} path="/clnt" exact/>
                   <Route component={LoginPage} path="/login"/>
                 </AuthProvider>
                 </Switch>
