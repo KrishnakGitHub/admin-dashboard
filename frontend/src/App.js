@@ -21,11 +21,12 @@ function App() {
         <div className='container-fluid'>
           <div className='row base'>
             <div className='sidebar col-3 mt-2 shadow'>
-              {/* <Sidebar/> */}
+              <Sidebar/>
             </div>
             <div className="main col mt-5">
               <div className='container-fluid'>
               <Router>
+              <Switch>
                 <AuthProvider>
                   <PrivateRoute component={DashboardPage} path="/" exact/>
                   <PrivateRoute component={HomePage} path="/home"/>
@@ -36,6 +37,7 @@ function App() {
                   <PrivateRoute component={ClientDetailsPage} path="/clnt"/>
                   <Route component={LoginPage} path="/login"/>
                 </AuthProvider>
+                </Switch>
               </Router>
               </div>
             </div>
