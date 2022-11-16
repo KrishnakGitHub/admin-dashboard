@@ -1,7 +1,7 @@
 from rest_framework import serializers
 from rest_framework.validators import UniqueValidator
 from django.contrib.auth.models import User
-from base.models import Note, Client, Project
+from base.models import Client, Project
 
 class UserSerializer(serializers.ModelSerializer):
     username = serializers.CharField(
@@ -31,7 +31,7 @@ class ClientSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
 
-class NoteSerializer(serializers.ModelSerializer):
+class ProjectSerializer(serializers.ModelSerializer):
     class Meta:
-        model = Note
+        model = Project
         fields = '__all__'

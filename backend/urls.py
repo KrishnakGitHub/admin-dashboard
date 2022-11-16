@@ -14,6 +14,7 @@ urlpatterns = [
     path('mc', TemplateView.as_view(template_name='index.html')),
     path('clnt', TemplateView.as_view(template_name='index.html')),
     path('login', TemplateView.as_view(template_name='index.html')),
+    path('register', TemplateView.as_view(template_name='index.html')),
     path('admin/', admin.site.urls),
     path('api/', include('base.api.urls'))
 ]

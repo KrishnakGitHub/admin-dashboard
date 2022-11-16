@@ -7,6 +7,7 @@ import Sidebar from './components/Sidebar';
 
 import HomePage from './pages/HomePage';
 import LoginPage from './pages/LoginPage';
+import RegisterPage from './pages/RegisterPage';
 import ProjectPage from './pages/ProjectPage';
 import ProjectDetailsPage from './pages/ProjectDetailsPage';
 import NewProjectPage from './pages/NewProjectPage';
@@ -36,6 +37,7 @@ function App() {
                   <PrivateRoute component={ManagerClientPage} path="/mc" exact/>
                   <PrivateRoute component={ClientDetailsPage} path="/clnt" exact/>
                   <Route component={LoginPage} path="/login"/>
+                  <Route component={RegisterPage} path="/register"/>
                 </AuthProvider>
                 </Switch>
               </Router>

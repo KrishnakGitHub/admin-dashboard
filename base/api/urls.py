@@ -1,6 +1,5 @@
 from django.urls import path
-from . import views
-from .views import MyTokenObtainPairView, registerUser, getClient, createClient
+from .views import MyTokenObtainPairView, getRoutes, registerUser, createProject, getProject, getClient, createClient
 
 from rest_framework_simplejwt.views import (
     TokenRefreshView,
@@ -8,11 +7,12 @@ from rest_framework_simplejwt.views import (
 
 
 urlpatterns = [
-    path('', views.getRoutes),
-    path('register/', views.registerUser, name="register-user"),
-    path('create-client/', views.createClient, name="create-client"),
-    path('clients/', views.getClient, name="clients"),
-    path('notes/', views.getNotes),
+    path('', getRoutes),
+    path('register/', registerUser, name="register-user"),
+    path('create-client/', createClient, name="create-client"),
+    path('clients/', getClient, name="clients"),
+    path('create-project/', createProject, name="create-project"),
+    path('projects/', getProject, name="projects"),
 
     path('token/', MyTokenObtainPairView.as_view(), name='token_obtain_pair'),
     path('token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),

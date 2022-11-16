@@ -23,6 +23,9 @@ const LoginPage = () => {
                                 <div className='row mt-2'>
                                         <input type="submit" name='Login'/>
                                 </div>
+                                <div className='row mt-2'>
+                                    <p>Don't have an account? <a href="/register">create one</a></p>
+                                </div>
                             </form>
                         </div>
                         </div>

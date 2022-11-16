@@ -3,11 +3,6 @@ from django.contrib.auth.models import User
 
 # Create your models here.
 
-
-class Note(models.Model):
-    user = models.ForeignKey(User, on_delete=models.CASCADE, null=True)
-    body = models.TextField()
-
 class Client(models.Model):
     client_name = models.CharField(max_length=60)
     client_company = models.CharField(max_length=60)
@@ -26,17 +21,22 @@ class Project(models.Model):
     ]
     PR_CHOICES = [
         ('H', 'High'),
-        ('H', 'Medium'),
-        ('H', 'High'),
+        ('M', 'Medium'),
+        ('L', 'Low'),
+    ]
+    WORK_STATUS_CHOICES = [
+        ('C', 'Completed'),
+        ('P', 'Pending'),
+        ('ON', 'On Process'),
     ]
     project_id = models.IntegerField()
     project_title = models.CharField(max_length=60)
     department = models.CharField(max_length=10, choices=DEPT_CHOICES)
-    project_priority = models.CharField(max_length=10, choices=DEPT_CHOICES)
+    project_priority = models.CharField(max_length=10, choices=PR_CHOICES)
     client = models.ForeignKey(Client, on_delete=models.CASCADE)
     date_from = models.DateField()
     date_to = models.DateField()
-    work_status = models.CharField(max_length=10)
+    work_status = models.CharField(max_length=10, choices=WORK_STATUS_CHOICES)
 
     def __str__(self):
-        return self.Project_id
+        return self.project_title

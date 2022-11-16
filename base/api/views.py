@@ -11,8 +11,8 @@ from rest_framework_simplejwt.views import TokenObtainPairView
 from rest_framework_simplejwt.tokens import RefreshToken
 
 
-from .serializers import NoteSerializer, UserSerializer, ClientSerializer
-from base.models import Note, Client, Project
+from .serializers import ProjectSerializer, UserSerializer, ClientSerializer
+from base.models import Client, Project
 
 
 class MyTokenObtainPairSerializer(TokenObtainPairSerializer):
@@ -79,10 +79,22 @@ def getClient(request):
     return Response(serializer.data)
 
 
+@api_view(['POST'])
+@permission_classes([IsAuthenticated])
+def createProject(request):
+    serializer = ProjectSerializer(data=request.data)
+    if not serializer.is_valid():
+        return Response({'status':403, 'errors':serializer.errors, 'message': 'Error! Please try again.'}) 
+    
+    if serializer.is_valid():
+        project = serializer.save()
+
+    return Response({'status':200, 'project':str(project), 'message': 'Project added Succesfully :)'})
+
+
 @api_view(['GET'])
 @permission_classes([IsAuthenticated])
-def getNotes(request):
-    user = request.user
-    notes = user.note_set.all()
-    serializer = NoteSerializer(notes, many=True)
+def getProject(request):
+    projects = Project.objects.all()
+    serializer = ProjectSerializer(projects, many=True)
     return Response(serializer.data)
