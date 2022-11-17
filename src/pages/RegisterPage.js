@@ -1,6 +1,10 @@
-import React from 'react'
+import React, {useContext} from 'react';
+import AuthContext from '../context/AuthContext';
+import {Link} from 'react-router-dom';
+
 
 const RegisterPage = () => {
+let {RegisterUser} = useContext(AuthContext)
   return (
     <div>
         <div className="container-fluid p-0 pt-2 m-0 ">
@@ -11,7 +15,7 @@ const RegisterPage = () => {
                 <div className="card-body px-5">
                 <div className="mb-5">
                     <p className="text-center">Register Here</p>
-                    <form>
+                    <form onSubmit={RegisterUser}>
                         <div className='row mt-2'>
                             <input className='form-control' type="text" name="username" placeholder="Enter Username" />
                         </div>
@@ -25,7 +29,7 @@ const RegisterPage = () => {
                                 <input type="submit" name='Register'/>
                         </div>
                         <div className='row mt-2'>
-                            <p>Already, have an account? <a href="/login">Login here</a></p>
+                            <p>Already, have an account? <Link to="/login">Login here</Link></p>
                         </div>
                     </form>
                 </div>

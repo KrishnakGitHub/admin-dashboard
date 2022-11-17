@@ -3,8 +3,8 @@ import jwt_decode from "jwt-decode";
 import { useHistory } from 'react-router-dom'
 
 
-const domain = 'https://dr-admin-dashboard.herokuapp.com'
-// const domain = 'https://8000-autumn-night-66818328.eu-ws4.runcode.io';
+// const domain = 'https://dr-admin-dashboard.herokuapp.com'
+const domain = 'https://8000-autumn-night-66818328.eu-ws3.runcode.io';
 
 
 const AuthContext = createContext()
@@ -18,6 +18,28 @@ export const AuthProvider = ({children}) => {
     let [loading, setLoading] = useState(true)
 
     const history = useHistory()
+
+    let RegisterUser = async (e )=> {
+        e.preventDefault()
+        let response = await fetch(`${domain}/api/register/`, {
+            method:'POST',
+            headers:{
+                'Content-Type':'application/json'
+            },
+            body:JSON.stringify({'username':e.target.username.value, 'email':e.target.email.value, 'password':e.target.password.value})
+        })
+        let data = await response.json()
+
+        if(response.status === 200){
+            // setAuthTokens(data)
+            // setUser(jwt_decode(data.access))
+            // localStorage.setItem('authTokens', JSON.stringify(data))
+            alert(data.message)
+            history.push('/')
+        }else{
+            alert('Something went wrong!')
+        }
+    }
 
     let loginUser = async (e )=> {
         e.preventDefault()
@@ -34,7 +56,7 @@ export const AuthProvider = ({children}) => {
             setAuthTokens(data)
             setUser(jwt_decode(data.access))
             localStorage.setItem('authTokens', JSON.stringify(data))
-            history.push('/')
+            history.push('/dashboard')
         }else{
             alert('Something went wrong!')
         }
@@ -78,6 +100,7 @@ export const AuthProvider = ({children}) => {
         user:user,
         authTokens:authTokens,
         loginUser:loginUser,
+        RegisterUser:RegisterUser,
         logoutUser:logoutUser,
     }
 

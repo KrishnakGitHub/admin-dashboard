@@ -1,5 +1,7 @@
-import React, { useState } from 'react';
-import { Link, BrowserRouter as Router } from 'react-router-dom';
+import React, { useState, useContext } from 'react';
+import { BrowserRouter as Router } from 'react-router-dom';
+import AuthContext from '../context/AuthContext';
+
 import {
   Nav,
   NavItem,
@@ -9,8 +11,8 @@ import {
   AccordionHeader,
   AccordionItem,
 } from 'reactstrap';
-
-function Sidebar(props) {
+const Sidebar = () => {
+  let {user, logoutUser} = useContext(AuthContext)
   const [open, setOpen] = useState('1');
   const toggle = (id) => {
     if (open === id) {
@@ -24,11 +26,14 @@ function Sidebar(props) {
     <Router>
     <Nav vertical>
       <Accordion open={open} toggle={toggle}>
+        <NavItem>
+          {user &&   <p>Hello {user.username}</p>}
+        </NavItem>
         <AccordionItem>
           <AccordionHeader targetId="1"><i class="bi bi-house-door-fill"></i> Dashboard</AccordionHeader>
           <AccordionBody accordionId="1">
           <NavItem>
-            <NavLink href="/">Dashboard</NavLink>
+            <NavLink href="/dashboard">Dashboard</NavLink>
           </NavItem>
           </AccordionBody>
         </AccordionItem>
@@ -53,6 +58,13 @@ function Sidebar(props) {
           </NavItem>
           </AccordionBody>
         </AccordionItem>
+        <NavItem>
+        {user ? (
+          <button className='btn btn-primary mt-2' onClick={logoutUser}>Logout</button>
+          ): (
+            <NavLink href="/login" >Login</NavLink>
+        )}
+        </NavItem>
       </Accordion>
     </Nav>
     </Router>

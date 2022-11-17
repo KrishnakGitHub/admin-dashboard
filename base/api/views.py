@@ -48,14 +48,14 @@ def registerUser(request):
     serializer = UserSerializer(data=request.data)
     
     if not serializer.is_valid():
-        return Response({'status':403, 'errors':serializer.errors, 'message': 'Error! Please try again.'  }) 
+        return Response({'status':403, 'errors':serializer.errors, 'data':serializer.data, 'message': 'Error! Please try again.'  }) 
     
     if serializer.is_valid():
         user = serializer.save()
         user = User.objects.get(username=serializer.data['username'])
         refresh = RefreshToken.for_user(user)
 
-    return Response({'status':200, 'refresh':str(refresh), 'token':str(refresh.access_token), 'message': 'Registration Succesful :)'  })
+    return Response({'status':200, 'token':str(refresh), 'data':serializer.data, 'token':str(refresh.access_token), 'message': 'Registration Succesful :)'  })
 
 
 @api_view(['POST'])

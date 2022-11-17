@@ -1,5 +1,6 @@
 import React, {useContext} from 'react'
 import AuthContext from '../context/AuthContext'
+import {Link} from 'react-router-dom';
 
 const LoginPage = () => {
     let {loginUser} = useContext(AuthContext)
@@ -12,7 +13,7 @@ const LoginPage = () => {
                     <div className="card mt-4 border-0">
                         <div className="card-body px-5">
                         <div className="mb-5">
-                            <p className="text-center">Dashboard LogIn</p>
+                            <p className="text-center">Login here</p>
                             <form onSubmit={loginUser}>
                                 <div className='row mt-2'>
                                     <input className='form-control' type="text" name="username" placeholder="Enter Username" />
@@ -24,7 +25,7 @@ const LoginPage = () => {
                                         <input type="submit" name='Login'/>
                                 </div>
                                 <div className='row mt-2'>
-                                    <p>Don't have an account? <a href="/register">create one</a></p>
+                                    <p>Don't have an account? <Link to="/register">create one</Link></p>
                                 </div>
                             </form>
                         </div>
