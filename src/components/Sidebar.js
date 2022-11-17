@@ -33,7 +33,7 @@ const Sidebar = () => {
           <AccordionHeader targetId="1"><i class="bi bi-house-door-fill"></i> Dashboard</AccordionHeader>
           <AccordionBody accordionId="1">
           <NavItem>
-            <NavLink href="/dashboard">Dashboard</NavLink>
+            <NavLink href="/">Dashboard</NavLink>
           </NavItem>
           </AccordionBody>
         </AccordionItem>

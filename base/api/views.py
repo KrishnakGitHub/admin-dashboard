@@ -36,7 +36,7 @@ def getRoutes(request):
     routes = [
         '/api/token',
         '/api/token/refresh',
-        '/api/register', 
+        '/api/register-user', 
         '/api/create-client',
         '/api/clients',
     ]
