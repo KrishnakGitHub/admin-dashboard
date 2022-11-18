@@ -13,7 +13,7 @@ import {
 } from 'reactstrap';
 const Sidebar = () => {
   let {user, logoutUser} = useContext(AuthContext)
-  const [open, setOpen] = useState('1');
+  const [open, setOpen] = useState('');
   const toggle = (id) => {
     if (open === id) {
       setOpen();
@@ -67,14 +67,14 @@ const Sidebar = () => {
     </Nav>
     </Router>
     ): (
-      <AccordionItem className='text-center mt-5 p-2'>
-        <NavItem className='btn m-3 p-2'>
-          <Link to="/login" >Login</Link>
+      <Nav className='mt-5 mx-5 p-4 text-center'>
+        <NavItem className='mx-2'>
+          <Link className='btn btn-primary link-light mb-2 d-inline' to="/login" >Login</Link>
         </NavItem>
-        <NavItem className='btn m-3 p-2'>
-          <Link to="/register" >Register</Link>
+        <NavItem className=''>
+          <Link className='btn btn-primary link-light d-inline' to="/register" >Register</Link>
         </NavItem>
-      </AccordionItem>
+      </Nav>
     )}
     </div>
   );

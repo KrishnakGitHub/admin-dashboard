@@ -23,7 +23,7 @@ function App() {
           <AuthProvider>
         <div className='container-fluid'>
           <div className='row base'>
-            <div className='sidebar col-3 mt-2 shadow'>
+            <div className='sidebar col-3 shadow'>
               <Sidebar/>
             </div>
             <div className="main col mt-5">

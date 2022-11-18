@@ -1,54 +1,66 @@
-body {
-    height: 100vh;
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    background: #efefff;
-  }
-  .base {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    height: 100%;
-    padding: 10px;
-  }
-  .base .sidebar {
-    padding: 10px;
-  }
-  .base .sidebar .accordion {
-    height: 100%;
-    padding: 20px;
-    background: #fff;
-    border-radius: 20px;
-  }
-  .base .main .total-row div {
-    border-radius: 5px;
-  }
-  .base .main .total-row div:nth-child(1) {
-    background: rgba(0, 0, 255, 0.139);
-  }
-  .base .main .total-row div:nth-child(2) {
-    background: rgba(246, 255, 0, 0.139);
-  }
-  .base .main .total-row div:nth-child(3) {
-    background: rgba(111, 255, 0, 0.139);
-  }
-  .base .main .total-row div:nth-child(4) {
-    background: rgba(255, 111, 0, 0.139);
-  }
-
-  .base .main .total-row div:nth-child(1) span {
-    color: rgba(0, 0, 255);
-  }
-  .base .main .total-row div:nth-child(2) span {
-    color: #ffc107;
-  }
-  .base .main .total-row div:nth-child(3) span {
-    color: rgba(111, 255, 0);
-  }
-  .base .main .total-row div:nth-child(4) span {
-    color: rgba(255, 111, 0);
-  }
-  
+body, .App {
+  height: 100vh;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  background: #efefff;
+}
+.base {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 100%;
+  padding: 20px;
+}
+.base .sidebar {
+  border-radius: 20px;
+  background: #fff;
+  padding: 0px;
+}
+.base .sidebar .accordion {
+  height: 100%;
+  padding: 20px;
+  background: #fff;
+  border-radius: 20px;
+}
+.base .sidebar .accordion .nav .nav-item .parent-link {
+  padding: 20px;
+  margin: 2px;
+  background: #fff;
+  border-radius: 5px;
+  color: grey;
+}
+.base .sidebar .accordion .nav .nav-item .parent-link .expan {
+  float: right;
+  position: relative;
+  color: #000;
+}
+.base .sidebar .accordion .nav .active .parent-link {
+  padding: 20px;
+  margin: 2px;
+  background: #702cf922;
+  border-radius: 5px;
+  color: #4c0bce;
+}
+.base .sidebar .accordion .nav .active .parent-link .expan {
+  float: right;
+  position: relative;
+  color: #000;
+}
+.base .main .total-row div {
+  border-radius: 5px;
+}
+.base .main .total-row div:nth-child(1) {
+  background: rgba(0, 0, 255, 0.139);
+}
+.base .main .total-row div:nth-child(2) {
+  background: rgba(246, 255, 0, 0.139);
+}
+.base .main .total-row div:nth-child(3) {
+  background: rgba(111, 255, 0, 0.139);
+}
+.base .main .total-row div:nth-child(4) {
+  background: rgba(255, 111, 0, 0.139);
+}
