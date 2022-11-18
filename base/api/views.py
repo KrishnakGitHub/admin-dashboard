@@ -39,6 +39,8 @@ def getRoutes(request):
         '/api/register', 
         '/api/create-client',
         '/api/clients',
+        '/api/projects',
+        '/api/dashboard',
     ]
 
     return Response(routes)
@@ -72,6 +74,14 @@ def createClient(request):
 
 
 @api_view(['GET'])
+# @permission_classes([IsAuthenticated])
+def dashboard(request):
+    clients = Client.objects.all()
+    serializer = ClientSerializer(clients, many=True)
+    return Response({'status':200, 'data':serializer.data , 'client_count':str(clients.count()), 'message': 'Dashboard :)'})
+
+
+@api_view(['GET'])
 @permission_classes([IsAuthenticated])
 def getClient(request):
     clients = Client.objects.all()
@@ -93,7 +103,7 @@ def createProject(request):
 
 
 @api_view(['GET'])
-@permission_classes([IsAuthenticated])
+# @permission_classes([IsAuthenticated])
 def getProject(request):
     projects = Project.objects.all()
     serializer = ProjectSerializer(projects, many=True)
