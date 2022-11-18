@@ -1,5 +1,5 @@
 import React, { useState, useContext } from 'react';
-import { BrowserRouter as Router } from 'react-router-dom';
+import { BrowserRouter as Router, Link } from 'react-router-dom';
 import AuthContext from '../context/AuthContext';
 
 import {
@@ -23,6 +23,8 @@ const Sidebar = () => {
   };
 
   return (
+    <div>
+      {user ? (
     <Router>
     <Nav vertical>
       <Accordion open={open} toggle={toggle}>
@@ -59,15 +61,22 @@ const Sidebar = () => {
           </AccordionBody>
         </AccordionItem>
         <NavItem>
-        {user ? (
           <button className='btn btn-primary mt-2' onClick={logoutUser}>Logout</button>
-          ): (
-            <NavLink href="/login" >Login</NavLink>
-        )}
         </NavItem>
       </Accordion>
     </Nav>
     </Router>
+    ): (
+      <AccordionItem className='text-center mt-5 p-2'>
+        <NavItem className='btn m-3 p-2'>
+          <Link to="/login" >Login</Link>
+        </NavItem>
+        <NavItem className='btn m-3 p-2'>
+          <Link to="/register" >Register</Link>
+        </NavItem>
+      </AccordionItem>
+    )}
+    </div>
   );
 }
 

@@ -19,19 +19,15 @@ function App() {
   return (
     <div className="App">
        <div>
+        <Router>
+          <AuthProvider>
         <div className='container-fluid'>
           <div className='row base'>
-          <Router>
-                <AuthProvider>
             <div className='sidebar col-3 mt-2 shadow'>
               <Sidebar/>
             </div>
-            </AuthProvider>
-              </Router>
             <div className="main col mt-5">
               <div className='container-fluid'>
-              <Router>
-                <AuthProvider>
                   <PrivateRoute component={DashboardPage} path="/" exact/>
                   <PrivateRoute component={HomePage} path="/home"exact/>
                   <PrivateRoute component={ProjectPage} path="/project"exact/>
@@ -41,12 +37,12 @@ function App() {
                   <PrivateRoute component={ClientDetailsPage} path="/clnt" exact/>
                   <Route component={LoginPage} path="/login" exact/>
                   <Route component={RegisterPage} path="/register"/>
-                </AuthProvider>
-              </Router>
               </div>
             </div>
           </div>
         </div>
+        </AuthProvider>
+        </Router>
       </div>
     </div>
   );
