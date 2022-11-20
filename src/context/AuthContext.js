@@ -62,6 +62,24 @@ export const AuthProvider = ({children}) => {
         }
     }
 
+    let addClient = async (e )=> {
+        e.preventDefault()
+        let response = await fetch(`${domain}/api/create-client/`, {
+            method:'POST',
+            headers:{
+                'Content-Type':'application/json'
+            },
+            body:JSON.stringify({'client_name':e.target.client_name.value, 'client_company':e.target.client_company.value, 'client_phone':e.target.client_phone.value, 'client_email':e.target.client_email.value})
+        })
+        let data = await response.json()
+    
+        if(response.status === 200){
+            alert(data.message)
+        }else{
+            alert('Something went wrong!')
+        }
+    }
+
 
     let logoutUser = () => {
         setAuthTokens(null)
@@ -102,6 +120,7 @@ export const AuthProvider = ({children}) => {
         loginUser:loginUser,
         RegisterUser:RegisterUser,
         logoutUser:logoutUser,
+        addClient:addClient
     }
 
 

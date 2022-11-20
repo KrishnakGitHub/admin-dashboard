@@ -39,8 +39,10 @@ def getRoutes(request):
         '/api/register', 
         '/api/create-client',
         '/api/clients',
+        '/api/create-project',
         '/api/projects',
         '/api/dashboard',
+        '/api/counts',
     ]
 
     return Response(routes)
@@ -74,19 +76,52 @@ def createClient(request):
 
 
 @api_view(['GET'])
-# @permission_classes([IsAuthenticated])
+@permission_classes([IsAuthenticated])
 def dashboard(request):
     clients = Client.objects.all()
     serializer = ClientSerializer(clients, many=True)
-    return Response({'status':200, 'data':serializer.data , 'client_count':str(clients.count()), 'message': 'Dashboard :)'})
+    projects = Project.objects.all()
+    projects_serializer = ProjectSerializer(projects, many=True)
+    completed_projects_count = projects.filter(work_status='C').count()
+    pending_projects_count = projects.filter(work_status='P').count()
+    ongoing_projects_count = projects.filter(work_status='ON').count()
+    return Response(
+        {
+            'status':200,
+            'data':serializer.data ,
+            'client_count':str(clients.count()),
+            'completed_projects_count':completed_projects_count,
+            'pending_projects_count':pending_projects_count,
+            'ongoing_projects_count':ongoing_projects_count,
+            'project_progress': (completed_projects_count*100/(pending_projects_count+ongoing_projects_count)),
+            'message': 'Dashboard :)'
+        })
 
+@api_view(['GET'])
+# @permission_classes([IsAuthenticated])
+def getCounts(request):
+    clients = Client.objects.all()
+    projects = Project.objects.all()
+    titles = projects.filter(project_title__icontains)
+    completed_projects_count = projects.filter(work_status='C').count()
+    pending_projects_count = projects.filter(work_status='P').count()
+    ongoing_projects_count = projects.filter(work_status='ON').count()
+    return Response(
+        {
+            'status':200,
+            'client_count':clients.count(),
+            'completed_projects_count':completed_projects_count,
+            'pending_projects_count':pending_projects_count,
+            'ongoing_projects_count':ongoing_projects_count,
+            'message': 'Counts :)'
+        })
 
 @api_view(['GET'])
 @permission_classes([IsAuthenticated])
 def getClient(request):
     clients = Client.objects.all()
     serializer = ClientSerializer(clients, many=True)
-    return Response(serializer.data)
+    return Response({'status':200, 'client_count':str(clients.count()), 'clients':serializer.data, 'message': 'Clients :)'})
 
 
 @api_view(['POST'])
@@ -103,8 +138,17 @@ def createProject(request):
 
 
 @api_view(['GET'])
-# @permission_classes([IsAuthenticated])
+@permission_classes([IsAuthenticated])
 def getProject(request):
     projects = Project.objects.all()
     serializer = ProjectSerializer(projects, many=True)
-    return Response(serializer.data)
+    return Response(
+        {
+            'status':200,
+            'projects_count':projects.count(),
+            'pending_projects':projects.filter(work_status='P').count(),
+            'ongoing_projects':projects.filter(work_status='ON').count(),
+            'completed_projects':projects.filter(work_status='C').count(),
+            'projects':serializer.data,
+            'message': 'Projects :)'
+        })

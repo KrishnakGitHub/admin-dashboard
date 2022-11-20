@@ -38,5 +38,7 @@ class Project(models.Model):
     date_to = models.DateField()
     work_status = models.CharField(max_length=10, choices=WORK_STATUS_CHOICES)
 
+    # def title_count()
+
     def __str__(self):
         return self.project_title

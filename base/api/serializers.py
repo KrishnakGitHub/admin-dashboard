@@ -32,6 +32,9 @@ class ClientSerializer(serializers.ModelSerializer):
 
 
 class ProjectSerializer(serializers.ModelSerializer):
+    DATE_INPUT_FORMATS = ('%d-%m-%Y','%Y-%m-%d')
+    date_from = serializers.DateField(input_formats=DATE_INPUT_FORMATS)
+    date_to = serializers.DateField(input_formats=DATE_INPUT_FORMATS)
     class Meta:
         model = Project
         fields = '__all__'

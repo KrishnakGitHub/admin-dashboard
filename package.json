@@ -2,6 +2,7 @@
   "name": "frontend",
   "version": "0.1.0",
   "private": true,
+  "proxy": "https://8000-autumn-night-66818328.eu-ws4.runcode.io",
   "dependencies": {
     "@testing-library/jest-dom": "^5.14.1",
     "@testing-library/react": "^11.2.7",
@@ -16,6 +17,7 @@
     "react-router-dom": "^5.3.0",
     "react-scripts": "4.0.3",
     "reactstrap": "^9.1.5",
+    "recharts": "^2.1.16",
     "web-vitals": "^1.1.2"
   },
   "scripts": {
