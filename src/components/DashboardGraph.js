@@ -54,26 +54,6 @@ const DashboardGraph = () =>{
     }
   }
   return (<div className='row'>
-    <div className="col m-3 p-2 bg-white rounded">
-      <span>Clients</span>
-      <PieChart width={200} height={200}>
-        <Pie
-          data={projectcount}
-          cx="50%"
-          cy="50%"
-          labelLine={false}
-          label={renderCustomizedLabel}
-          outerRadius={80}
-          fill="#8884d8"
-          dataKey="value"
-        >
-          {data.map((entry, index) => (
-            <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
-          ))}
-        </Pie>
-        <Tooltip />
-    </PieChart>
-  </div>
 
     <div className="col m-3 p-2 bg-white rounded">
       <span>Projects</span>

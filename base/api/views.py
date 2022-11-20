@@ -98,7 +98,7 @@ def dashboard(request):
         })
 
 @api_view(['GET'])
-# @permission_classes([IsAuthenticated])
+@permission_classes([IsAuthenticated])
 def getCounts(request):
     clients = Client.objects.all()
     projects = Project.objects.all()
