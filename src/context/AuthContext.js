@@ -3,10 +3,6 @@ import jwt_decode from "jwt-decode";
 import { useHistory } from 'react-router-dom'
 
 
-const domain = 'https://dr-admin-dashboard.herokuapp.com';
-// const domain = 'https://8000-autumn-night-66818328.eu-ws4.runcode.io';
-
-
 const AuthContext = createContext()
 
 export default AuthContext;
@@ -21,7 +17,7 @@ export const AuthProvider = ({children}) => {
 
     let RegisterUser = async (e )=> {
         e.preventDefault()
-        let response = await fetch(`${domain}/api/register/`, {
+        let response = await fetch(`/api/register/`, {
             method:'POST',
             headers:{
                 'Content-Type':'application/json'
@@ -43,7 +39,7 @@ export const AuthProvider = ({children}) => {
 
     let loginUser = async (e )=> {
         e.preventDefault()
-        let response = await fetch(`${domain}/api/token/`, {
+        let response = await fetch(`/api/token/`, {
             method:'POST',
             headers:{
                 'Content-Type':'application/json'
@@ -64,7 +60,7 @@ export const AuthProvider = ({children}) => {
 
     let addClient = async (e )=> {
         e.preventDefault()
-        let response = await fetch(`${domain}/api/create-client/`, {
+        let response = await fetch(`/api/create-client/`, {
             method:'POST',
             headers:{
                 'Content-Type':'application/json'
@@ -91,7 +87,7 @@ export const AuthProvider = ({children}) => {
 
     let updateToken = async ()=> {
 
-        let response = await fetch(`${domain}/api/token/refresh/`, {
+        let response = await fetch(`/api/token/refresh/`, {
             method:'POST',
             headers:{
                 'Content-Type':'application/json'
