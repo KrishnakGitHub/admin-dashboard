@@ -1,5 +1,7 @@
-import React, { useEffect, useState } from 'react';
-import { PieChart, Pie, Tooltip, Sector, Cell } from 'recharts';
+import React, { useEffect, useContext, useState } from 'react';
+import { PieChart, Pie, Tooltip, Cell } from 'recharts';
+import AuthContext from '../context/AuthContext';
+
 
 const data = [
   { name: 'Group A', value: 400 },
@@ -24,8 +26,7 @@ const renderCustomizedLabel = ({ cx, cy, midAngle, innerRadius, outerRadius, per
 };
 
 const DashboardGraph = () =>{
-  let [graphdata, setGraphdata] = useState([]);
-  let [clientcount, setClientcount] = useState([]);
+  let {authTokens, logoutUser} = useContext(AuthContext)
   let [projectcount, setProjectcount] = useState([]);
   useEffect(() => {
     getGraphdata();
@@ -34,12 +35,11 @@ const DashboardGraph = () =>{
     let response = await fetch('/api/counts/', {
       headers:{
         'Content-Type':'application/json',
-        'Authorization':'Bearer '+JSON.parse(localStorage.getItem('authTokens')).access+'',
+        'Authorization':'Bearer '+ String(authTokens.access),
     },
     })
     let data = await response.json()
     if(response.status === 200){
-      setGraphdata(data);
       setProjectcount(
         [
           { name: 'Completed', value: data.completed_projects_count },
@@ -48,14 +48,15 @@ const DashboardGraph = () =>{
         ]
       )
       console.log(data)
-    }
+    }else if(response.statusText === 'Unauthorized'){
+      logoutUser()
+  }
     else{
       alert('Something went wrong!');
     }
   }
   return (<div className='row'>
-
-    <div className="col m-3 p-2 bg-white rounded">
+    <div className="col-4 m-3 p-2 bg-white rounded">
       <span>Projects</span>
       <PieChart width={200} height={200}>
         <Pie

@@ -102,7 +102,6 @@ def dashboard(request):
 def getCounts(request):
     clients = Client.objects.all()
     projects = Project.objects.all()
-    titles = projects.filter(project_title__icontains)
     completed_projects_count = projects.filter(work_status='C').count()
     pending_projects_count = projects.filter(work_status='P').count()
     ongoing_projects_count = projects.filter(work_status='ON').count()

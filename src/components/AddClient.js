@@ -1,4 +1,4 @@
-import React, {useContext} from 'react';
+import React from 'react';
 import { Button, Modal, ModalBody, ModalFooter } from 'reactstrap';
 
 // const domain = 'https://dr-admin-dashboard.herokuapp.com';

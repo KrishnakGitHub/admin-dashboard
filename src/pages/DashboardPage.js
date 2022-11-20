@@ -1,9 +1,12 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState, useContext, useEffect} from 'react';
 
 import ProjectForm from '../components/ProjectForm';
 import DashboardGraph from '../components/DashboardGraph';
+import AuthContext from '../context/AuthContext';
+
 
 const DashboardPage = () => {
+  let {authTokens, logoutUser} = useContext(AuthContext)
   let [dashboard, setDasboard] = useState([])
   useEffect(() => {
     getDasboard()
@@ -13,13 +16,15 @@ const DashboardPage = () => {
     let response = await fetch('/api/dashboard/', {
       headers:{
         'Content-Type':'application/json',
-        'Authorization':'Bearer '+JSON.parse(localStorage.getItem('authTokens')).access+'',
+        'Authorization':'Bearer '+ String(authTokens.access),
     },
     })
     let data = await response.json()
     if(response.status === 200){
       setDasboard(data);
-    }
+    }else if(response.statusText === 'Unauthorized'){
+      logoutUser()
+  }
     else{
       alert('Something went wrong!');
     }

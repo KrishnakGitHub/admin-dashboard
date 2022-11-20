@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button, Input, Modal, ModalBody, ModalFooter } from 'reactstrap';
+import { Button, Modal, ModalBody, ModalFooter } from 'reactstrap';
 
 
 class ProjectForm extends React.Component {
