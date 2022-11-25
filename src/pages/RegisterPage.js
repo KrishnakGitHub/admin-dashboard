@@ -20,7 +20,7 @@ let {RegisterUser} = useContext(AuthContext)
                             <input className='form-control' type="text" name="username" placeholder="Enter Username" />
                         </div>
                         <div className='row mt-2'>
-                            <input className='form-control' type="text" name="email" placeholder="Enter Username" />
+                            <input className='form-control' type="text" name="email" placeholder="Enter Email" />
                         </div>
                         <div className='row mt-2'>
                                 <input className='form-control' type="password" name="password" placeholder="Enter Password" />
